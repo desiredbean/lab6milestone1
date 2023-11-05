@@ -76,8 +76,10 @@ public class MainActivity extends FragmentActivity {
 
                 if (task.isSuccessful() && mLasKnownLocation != null) {
                     Log.i("CALEB", "task was successful");
+                    LatLng lastLocation = new LatLng(mLasKnownLocation.getLatitude(), mLasKnownLocation.getLongitude());
+                    mMap.addPolyline(new PolylineOptions().add(lastLocation,mDestinationLatLng));
 
-                    mMap.addPolyline(new PolylineOptions().add(new LatLng(mLasKnownLocation.getLatitude(), mLasKnownLocation.getLongitude()),mDestinationLatLng));
+                    mMap.addMarker(new MarkerOptions().position(lastLocation).title("Last Known Location"));
                 }
             });
         }
