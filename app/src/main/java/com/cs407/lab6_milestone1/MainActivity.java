@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
-    private final LatLng mDestinationLatLng = new LatLng(43.0766,-89.4125 );
+    private final LatLng mDestinationLatLng = new LatLng(43.07493,-89.40235 );
 //    private final LatLng mDestinationLatLng = new LatLng(-33.8523341, 151.2106085);
     private GoogleMap mMap;
 
@@ -42,7 +42,6 @@ public class MainActivity extends FragmentActivity {
         supportMapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
             googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
-
         });
 
         // obtain a fused location provider client
@@ -79,7 +78,7 @@ public class MainActivity extends FragmentActivity {
                     LatLng lastLocation = new LatLng(mLasKnownLocation.getLatitude(), mLasKnownLocation.getLongitude());
                     mMap.addPolyline(new PolylineOptions().add(lastLocation,mDestinationLatLng));
 
-                    mMap.addMarker(new MarkerOptions().position(lastLocation).title("Last Known Location"));
+                    mMap.addMarker(new MarkerOptions().position(lastLocation).title("Last Known Location \nLatitude: " + mLasKnownLocation.getLatitude() + "\nLongitude: " + mLasKnownLocation.getLongitude()));
                 }
             });
         }
